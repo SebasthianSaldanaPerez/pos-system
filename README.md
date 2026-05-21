@@ -85,5 +85,5 @@ Desktop application development
 
 ## 📄 License
 
-This project is for educational and personal use.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
