@@ -33,8 +33,7 @@ project/
 
 - Python 3.11+
 - PySide6 (Desktop GUI)
-- SQLAlchemy (ORM)
-- PostgreSQL / SQLite
+- PostgreSQL
 - python-dotenv
 
 ---
