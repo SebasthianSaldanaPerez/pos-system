@@ -10,7 +10,7 @@ A Point of Sale (POS) and Inventory Management System built with Python, designe
 - 🛒 Fast POS sales system
 - 📥 Purchases and supplier management
 - 📊 Stock movement tracking
-- 👥 Customer and supplier management
+- 👥 Supplier management
 - 🧠 Layered architecture (Controllers, Services, DAO, Models)
 - 🖥️ Desktop GUI built with PySide6
 
