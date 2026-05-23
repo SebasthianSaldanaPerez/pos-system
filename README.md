@@ -1,6 +1,6 @@
 # 🧾 POS System 
 
-A Point of Sale (POS) and Inventory Management System built with Python, designed with a modular architecture inspired by MVC / DDD principles.
+A Point of Sale (POS) and Inventory Management System built with Python, designed with a modular architecture inspired by MVC principles.
 
 ---
 
@@ -8,7 +8,7 @@ A Point of Sale (POS) and Inventory Management System built with Python, designe
 
 - 📦 Inventory management (products, categories, stock control)
 - 🛒 Fast POS sales system
-- 📥 Purchases and supplier management
+- 📥 Purchases management
 - 📊 Stock movement tracking
 - 👥 Supplier management
 - 🧠 Layered architecture (Controllers, Services, DAO, Models)
