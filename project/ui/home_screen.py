@@ -61,7 +61,7 @@ class HomeScreen(QWidget):
 
         layout_background = QVBoxLayout()
 
-        image_route = self.get_asset('ui/assets/bodeguita.png')
+        image_route = self.get_asset('assets/bodeguita.png')
         pixmap = QPixmap(image_route)
         image = QLabel()
         image.setPixmap(pixmap)
@@ -83,7 +83,7 @@ class HomeScreen(QWidget):
         self.button_categories = QToolButton()
         self.button_categories.setFixedSize(160,160)
         self.button_categories.setText("Categorías")
-        self.button_categories.setIcon(QIcon(self.get_asset('ui/assets/categories.png')))
+        self.button_categories.setIcon(QIcon(self.get_asset('assets/categories.png')))
         self.button_categories.setIconSize(QSize(64, 64))
         self.button_categories.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_categories.setStyleSheet("""
@@ -102,7 +102,7 @@ class HomeScreen(QWidget):
         self.button_articles = QToolButton()
         self.button_articles.setFixedSize(160,160)
         self.button_articles.setText("Artículos")
-        self.button_articles.setIcon(QIcon(self.get_asset('ui/assets/articles.png')))
+        self.button_articles.setIcon(QIcon(self.get_asset('assets/articles.png')))
         self.button_articles.setIconSize(QSize(64, 64))
         self.button_articles.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_articles.setStyleSheet("""
@@ -121,7 +121,7 @@ class HomeScreen(QWidget):
         self.button_movements = QToolButton()
         self.button_movements.setFixedSize(160,160)
         self.button_movements.setText("Movimientos")
-        self.button_movements.setIcon(QIcon(self.get_asset('ui/assets/movements.png')))
+        self.button_movements.setIcon(QIcon(self.get_asset('assets/movements.png')))
         self.button_movements.setIconSize(QSize(64, 64))
         self.button_movements.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_movements.setStyleSheet("""
@@ -141,7 +141,7 @@ class HomeScreen(QWidget):
         self.button_suppliers = QToolButton()
         self.button_suppliers.setFixedSize(160,160)
         self.button_suppliers.setText("Proveedores")
-        self.button_suppliers.setIcon(QIcon(self.get_asset('ui/assets/suppliers.png')))
+        self.button_suppliers.setIcon(QIcon(self.get_asset('assets/suppliers.png')))
         self.button_suppliers.setIconSize(QSize(64, 64))
         self.button_suppliers.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_suppliers.setStyleSheet("""
@@ -160,7 +160,7 @@ class HomeScreen(QWidget):
         self.button_sales = QToolButton()
         self.button_sales.setFixedSize(160,160)
         self.button_sales.setText("Ventas")
-        self.button_sales.setIcon(QIcon(self.get_asset('ui/assets/sales.png')))
+        self.button_sales.setIcon(QIcon(self.get_asset('assets/sales.png')))
         self.button_sales.setIconSize(QSize(64, 64))
         self.button_sales.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_sales.setStyleSheet("""
@@ -179,7 +179,7 @@ class HomeScreen(QWidget):
         self.button_purchases = QToolButton()
         self.button_purchases.setFixedSize(160, 160)
         self.button_purchases.setText("Compras")
-        self.button_purchases.setIcon(QIcon(self.get_asset('ui/assets/purchases.png')))
+        self.button_purchases.setIcon(QIcon(self.get_asset('assets/purchases.png')))
         self.button_purchases.setIconSize(QSize(64, 64))
         self.button_purchases.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_purchases.setStyleSheet("""
@@ -198,7 +198,7 @@ class HomeScreen(QWidget):
         self.button_pos = QToolButton()
         self.button_pos.setFixedSize(160, 160)
         self.button_pos.setText("Punto de Venta")
-        self.button_pos.setIcon(QIcon(self.get_asset('ui/assets/pos.png')))
+        self.button_pos.setIcon(QIcon(self.get_asset('assets/pos.png')))
         self.button_pos.setIconSize(QSize(64, 64))
         self.button_pos.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_pos.setStyleSheet("""
@@ -217,7 +217,7 @@ class HomeScreen(QWidget):
         self.button_pop = QToolButton()
         self.button_pop.setFixedSize(160, 160)
         self.button_pop.setText("Punto de Compra")
-        self.button_pop.setIcon(QIcon(self.get_asset('ui/assets/pop.png')))
+        self.button_pop.setIcon(QIcon(self.get_asset('assets/pop.png')))
         self.button_pop.setIconSize(QSize(64, 64))
         self.button_pop.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.button_pop.setStyleSheet("""
@@ -234,6 +234,5 @@ class HomeScreen(QWidget):
                                                                 """)
 
     def get_asset(self, relative_path):
-        if hasattr(sys, '_MEIPASS'):
-            return os.path.join(sys._MEIPASS, relative_path)
-        return os.path.join(os.path.abspath("."), relative_path)
+        base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+        return os.path.join(base_path, relative_path)

@@ -17,9 +17,8 @@ def main_database():
 
 
 def resource_path(relative_path):
-    if hasattr(sys, '_MEIPASS'):
-        return os.path.join(sys._MEIPASS, relative_path)
-    return os.path.join(os.path.abspath("."), relative_path)
+    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 
 if __name__ == '__main__':
@@ -27,7 +26,7 @@ if __name__ == '__main__':
     myappid = 'vicky.pos.app'
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(resource_path('ui/assets/main_icon.ico')))
+    app.setWindowIcon(QIcon(resource_path('assets/main_icon.ico')))
     app.setStyleSheet("""
     QWidget {
         background-color: white;
