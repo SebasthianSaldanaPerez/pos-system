@@ -57,16 +57,26 @@ class MainWindow(QMainWindow):
         self.home_screen.button_movements.clicked.connect(lambda: self.stack.setCurrentWidget(self.movements))
         self.home_screen.button_sales.clicked.connect(self.open_sales)
         self.home_screen.button_purchases.clicked.connect(self.open_purchase)
-        self.home_screen.button_pop.clicked.connect(lambda: self.stack.setCurrentWidget(self.pop_screen))
-        self.home_screen.button_pos.clicked.connect(lambda: self.stack.setCurrentWidget(self.pos_screen))
+        self.home_screen.button_pop.clicked.connect(self.open_pop)
+        self.home_screen.button_pos.clicked.connect(self.open_pos)
 
         self.add_menu_bar()
 
+        self.previous_index = 0
+
     def change_tab(self, index):
+
+        previous_widget = self.stack.widget(self.previous_index)
+
+        if previous_widget and hasattr(previous_widget, 'reset'):
+            previous_widget.reset()
+
         current_widget = self.stack.widget(index)
 
         if hasattr(current_widget, 'reset_pagination'):
             current_widget.reset_pagination()
+        
+        self.previous_index = index
 
     def add_menu_bar(self):
         menu_bar = self.menuBar()
@@ -87,7 +97,7 @@ class MainWindow(QMainWindow):
 
         action_detail_sale.triggered.connect(self.open_sales_detail)
         action_general_sale.triggered.connect(self.open_sales_general)
-        pos.triggered.connect(lambda: self.stack.setCurrentWidget(self.pos_screen))
+        pos.triggered.connect(self.open_pos)
 
 
         menu_purchases = menu_bar.addMenu('Compras')
@@ -97,7 +107,7 @@ class MainWindow(QMainWindow):
 
         action_detail_purchase.triggered.connect(self.open_purchases_detail)
         action_general_purchase.triggered.connect(self.open_purchases_general)
-        pop.triggered.connect(lambda: self.stack.setCurrentWidget(self.pop_screen))
+        pop.triggered.connect(self.open_pop)
 
 
         # Connection
@@ -120,6 +130,14 @@ class MainWindow(QMainWindow):
             self.helpwindow.hide()
         else:
             self.helpwindow.show()
+
+    def open_pop(self):
+        self.pop_screen.refresh()
+        self.stack.setCurrentWidget(self.pop_screen)
+
+    def open_pos(self):
+        self.pos_screen.refresh()
+        self.stack.setCurrentWidget(self.pos_screen)
 
     def open_sales(self):
         self.stack.setCurrentWidget(self.sales)

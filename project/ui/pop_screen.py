@@ -275,6 +275,21 @@ class PopScreen(QWidget):
         self.load_article_suggestions()
         self.btn_clear.clicked.connect(self.clear_order)
 
+    
+    def reset(self):
+        self.controller_pop.clear_cart()
+        self.table.setRowCount(0)
+        self.article.clear()
+        self.supplier.setCurrentIndex(0)
+        self.payment.clear()
+
+        self.total.setText('TOTAL: $0.00')
+        self.change.setText('CAMBIO: $0.00')
+    
+    def refresh(self):
+        self.load_article_suggestions()
+        self.load_supplier()
+
     def load_supplier(self):
         suppliers = self.controller_suppliers.get_all()
         self.supplier.clear()

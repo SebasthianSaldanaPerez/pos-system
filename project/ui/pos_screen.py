@@ -445,11 +445,22 @@ class PosScreen(QWidget):
 
         self.article.returnPressed.connect(self.search_article)
         self.btn_save.clicked.connect(self.save_sale)
-        self.load_article_suggestions()
         self.btn_clear.clicked.connect(self.clear_order)
         self.price_mode.currentTextChanged.connect(self.change_price_mode)
         self.method.currentTextChanged.connect(self.change_payment_method)
         self.commission.valueChanged.connect(self.change_commission)
+
+    def reset(self):
+        self.controller_pos.clear_cart()
+        self.table.setRowCount(0)
+        self.article.clear()
+        self.payment.clear()
+        self.total.setText("TOTAL: $0.00")
+        self.change.setText('CAMBIO: $0.00')
+
+    def refresh(self):
+        self.load_article_suggestions()
+        
 
     def change_commission(self):
         percent = self.commission.value()
